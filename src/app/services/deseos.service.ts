@@ -17,5 +17,10 @@ export class DeseosService {
   getListas(){
     return this.listas;
   }
+
+  crearLista(titulo:string){
+    const nuevaLista = new Lista(titulo);
+    this.listas.push(nuevaLista);
+  }
 }
  

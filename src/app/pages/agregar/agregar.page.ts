@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Lista } from 'src/app/models/lista.model';
+import { DeseosService } from 'src/app/services/deseos.service';
 
 @Component({
   selector: 'app-agregar',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgregarPage implements OnInit {
 
-  constructor() { }
+  id: string;
+  lista: Lista;
 
-  ngOnInit() {
+  constructor(private deseosService: DeseosService, private router: ActivatedRoute) {
+    this.router.params.subscribe(params=>{
+      this.id = params['listaId'];
+      this.consultarLista();
+    });
+   }
+
+  consultarLista(){
+    this.lista = this.deseosService.obtenerLista(this.id);
   }
+
+  ngOnInit(){
+  } 
 
 }

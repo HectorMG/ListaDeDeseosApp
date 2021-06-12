@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Lista } from 'src/app/models/lista.model';
 import { DeseosService } from 'src/app/services/deseos.service';
@@ -10,6 +10,7 @@ import { DeseosService } from 'src/app/services/deseos.service';
 })
 export class ListaComponent implements OnInit {
 
+  @Input() terminada = true;
   listas: Lista[] = [];
 
   constructor(private router:Router, private deseosService: DeseosService) {
@@ -19,7 +20,11 @@ export class ListaComponent implements OnInit {
   ngOnInit() {}
 
   verLista(lista: Lista){
-    this.router.navigate(['/tabs/tab1/agregar',lista.id]);
+    if(this.terminada){
+      this.router.navigate(['/tabs/tab2/agregar',lista.id]);
+    }else{
+      this.router.navigate(['/tabs/tab1/agregar',lista.id]);
+    }
   }
 
 }

@@ -52,4 +52,8 @@ export class Tab1Page {
     await alert.present();
   }
 
+  verLista(lista: Lista){
+    this.router.navigate(['/tabs/tab1/agregar',lista.id]);
+  }
+
 }

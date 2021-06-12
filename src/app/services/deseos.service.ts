@@ -43,5 +43,14 @@ export class DeseosService {
     this.guardarStorage();
   }
 
+  editarLista(lista:Lista,nuevoTitulo:string){
+    this.listas.map(listaData=>{
+      if(listaData.id===lista.id){
+        listaData.titulo = nuevoTitulo;
+      }
+    });
+    this.guardarStorage();
+  }
+
 }
  

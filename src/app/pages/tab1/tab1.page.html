@@ -7,20 +7,12 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" color="dark">
+  <app-lista></app-lista>
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Pendientes</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <ion-list color="dark">
-    <ion-item *ngFor="let lista of listas" detail color="dark" (click)="verLista(lista)">
-      <ion-label>
-        {{ lista.titulo }}
-      </ion-label>
-      <ion-note slot="end" color="tertiary">{{ lista.items.length }} items</ion-note>
-    </ion-item>
-  </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button  color="tertiary" (click)="agregar()">
